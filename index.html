@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+	<header class="app-header">
+		<div class="add-task-box">
+			<input class="task-input" id="task-input" type="text" placeholder="添加一个任务吧..." maxlength="14">
+			<button class="add-btn" id="task-add-btn">
+				
+				<svg viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><style type="text/css"><![CDATA[@font-face{font-family: ifont; src: url("//at.alicdn.com/t/font_1442373896_4754455.eot?#iefix") format("embedded-opentype"), url("//at.alicdn.com/t/font_1442373896_4754455.woff") format("woff"), url("//at.alicdn.com/t/font_1442373896_4754455.ttf") format("truetype"), url("//at.alicdn.com/t/font_1442373896_4754455.svg#ifont") format("svg");}]]></style></defs><g class="transform-group"><g transform="scale(0.015625, 0.015625)"><path d="M391.694455 440.888889C371.799733 440.888889 339.418834 440.888889 319.806806 440.888889L53.37038 440.888889C24.426727 440.888889 0 464.767036 0 494.222222 0 523.882765 23.894733 547.555556 53.37038 547.555556L422.699325 547.555556C442.563539 547.555556 458.666667 563.623942 458.666667 583.626612L458.666667 970.629619C458.666667 999.573274 482.544813 1024 512 1024 541.660543 1024 565.333333 1000.105267 565.333333 970.629619L565.333333 583.626612C565.333333 563.705117 580.726518 547.555556 601.300675 547.555556L970.629619 547.555556C999.573274 547.555556 1024 523.677409 1024 494.222222 1024 464.561679 1000.105267 440.888889 970.629619 440.888889L601.300675 440.888889C581.436461 440.888889 565.333333 425.217747 565.333333 405.126683L565.333333 53.37038C565.333333 24.426727 541.455187 0 512 0 482.339457 0 458.666667 23.894733 458.666667 53.37038L458.666667 405.126683C458.666667 424.877604 442.573731 440.888889 422.644086 440.888889L391.694455 440.888889Z"></path></g></g></svg>
+
+			</button>
+		</div>
+	</header>
+	<main class="app-main">
+		<!-- 待办事项 -->
+		<ul class="app-list" id="todo-list"></ul>
+		<!-- 完成事项 -->
+		<ul class="app-list" id="completed-list"></ul>
+	</main>
+	<script src="js/main.js"></script>
+</body>
+</html>
