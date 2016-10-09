@@ -21,7 +21,6 @@ $('#addBtn').click(function(event) {
 			'-webkit-transform': 'rotate(0deg)'
 		});
 		$('.okAddBtn').css('bottom', '4%');
-
 	}		
 });
 
@@ -98,8 +97,3 @@ function Render() {
 		init: init
 	};
 }
-
-
-
-
-
