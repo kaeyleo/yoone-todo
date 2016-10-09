@@ -1,0 +1,134 @@
+body, ul, li, header{
+	padding: 0;
+	margin: 0 auto;
+}
+.app {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: -webkit-linear-gradient(top, #4a91e2, #4ab2e2);
+	overflow: scroll;
+}
+.app-header {
+	width: 100%;
+	height: 100px;
+	/* background-color: #000; */
+}
+.app-title {
+	margin: 0 auto;
+	width: 90px;
+	height: 100%;
+	font-size: 28px;
+	color: #fff;
+	font-family: STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
+	line-height: 100px;
+	letter-spacing: 2px;
+}
+.list {
+	width: 100%;
+	padding: 0;
+	margin: 0 auto 120px auto;
+}
+.task-item {
+	position: relative;
+	list-style: none;
+	width: 90%;
+	padding: 30px 0;
+	background-color: #fff;
+	border-radius: 3px;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, .2);
+	overflow: auto;
+	margin-bottom: 15px;
+}
+.task-item:last-child {
+	margin-bottom: 10px;
+}
+.task-item span{
+	float: left;
+	margin-left: 20px;
+}
+.task-item i {
+	// display: none;
+}
+.task-title {
+	font-size: 16px;
+	font-family: Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
+}
+.finish {
+	position: absolute;
+	top: 23px;
+	right: 20px;
+	width: 30px;
+	height: 30px;
+	border-radius: 15px;
+	background-color: #cadce4;
+	cursor: pointer;
+}
+.tips {
+	font-size: 20px;
+	color: #9E9E9E;
+	text-align: center;
+	margin-top: 60px;
+}
+.addBtn {
+	position: fixed;
+	bottom: 3%;
+	right: 5%;
+	z-index: 10;
+	width: 60px;
+	height: 60px;
+	background-color: #ff4081;
+	border-radius: 100px;
+	box-shadow: 0 6px 10px rgba(0, 0, 0, .35);
+	transition: .2s ease;
+}
+.addBtn svg {
+	width: 20px;
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	fill: #fff;
+}
+.okAddBtn {	
+	position: fixed;
+	bottom: 4%;
+	right: 6.5%;
+	z-index: 9;
+	width: 50px;
+	height: 50px;
+	background-color: #757575;
+	border-radius: 100px;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, .4);
+	font-size: 14px;
+	color: #fff;
+	line-height: 50px;
+	text-align: center;
+	transition: .2s ease-out;
+	font-family: 'webfont', Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
+}
+.addContent{
+	display: none;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	background-color: rgba(255, 255, 255, 1);
+}
+.add-task-input {
+	margin: 0 auto;
+	margin-top: 100px;
+	display: block;
+	width: 90%;
+	height: 50px;
+	background-color: transparent;
+	border-bottom: 2px solid #BDBDBD;
+	font-size: 22px;
+	font-family: 'webfont', Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
+	color: #212121;
+	line-height: 30px;
+}
+input{
+	outline: none;
+	border: 0;
+}
