@@ -2,24 +2,39 @@ body, ul, li, header{
 	padding: 0;
 	margin: 0 auto;
 }
-.app {
-	position: fixed;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	background: -webkit-linear-gradient(top, #4a91e2, #4ab2e2);
-	overflow: scroll;
+body {
+	background-color: #edf0f1;
 }
+// .app {
+// 	position: fixed;
+// 	top: 0;
+// 	width: 100%;
+// 	height: 100%;
+// 	overflow: scroll;
+// 	background-color: #edf0f1;
+// }
 .app-header {
-	position: relative;
-	// background-color: #000;
+	position: fixed;
+	z-index: 8;
+	background-color: #25b99a;
 	width: 100%;
-	height: 100px;
+	height: 70px;
+	box-shadow: 0 2px 3px rgba(44,62,80,0.16);
+}
+.app-title {
+	margin: 0 auto;
+	width: 90px;
+	height: 100%;
+	font-size: 24px;
+	color: #fff;
+	font-family: STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
+	letter-spacing: 1px;
+	margin-top: 25px;
 }
 .app-menu {
 	width: 40px;
 	position: absolute;
-	top: 30px;
+	top: 18px;
 	left: 5%;
 	padding: 3px 0;
 	border-radius: 3px;
@@ -44,15 +59,10 @@ body, ul, li, header{
 // .mstr-bot{
 // 	transform: rotate(-43deg);
 // }
-.app-title {
-	margin: 0 auto;
-	width: 90px;
-	height: 100%;
-	font-size: 28px;
-	color: #fff;
-	font-family: STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
-	line-height: 100px;
-	letter-spacing: 2px;
+
+.app-main {	
+	position: relative;
+	top: 90px;
 }
 .list {
 	width: 100%;
@@ -66,7 +76,7 @@ body, ul, li, header{
 	padding: 30px 0;
 	background-color: #fff;
 	border-radius: 3px;
-	box-shadow: 0 3px 6px rgba(0, 0, 0, .2);
+	box-shadow: 0 3px 4px rgba(0, 0, 0, .1);
 	overflow: auto;
 	margin-bottom: 15px;
 }
@@ -100,17 +110,23 @@ body, ul, li, header{
 	text-align: center;
 	margin-top: 60px;
 }
-.addBtn {
+.btnBox {
 	position: fixed;
-	bottom: 25px;
-	right: 15px;
+	bottom: 3%;
+	right: 5%;
 	z-index: 10;
+	// background-color: #000;
+}
+.addBtn {
+	position: relative;
+	z-index: 12;
 	width: 60px;
 	height: 60px;
-	background-color: #ff4081;
+	background-color: #FFC107;
 	border-radius: 100px;
-	box-shadow: 0 6px 10px rgba(0, 0, 0, .35);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, .2);
 	transition: .2s ease;
+	// opacity: .5;
 }
 .addBtn svg {
 	width: 20px;
@@ -118,27 +134,29 @@ body, ul, li, header{
 	top: 20px;
 	left: 20px;
 	fill: #fff;
+	transition: .2s ease;
 }
 .okAddBtn {	
-	position: fixed;
-	bottom: 30px;
-	right: 20px;
-	z-index: 9;
+	position: absolute;
+	bottom: 5px;
+	right: 5px;
+	z-index: 11;
 	width: 50px;
 	height: 50px;
 	background-color: #757575;
 	border-radius: 100px;
-	box-shadow: 0 3px 6px rgba(0, 0, 0, .4);
+	box-shadow: 0 2px 6px rgba(0, 0, 0, .3);
 	font-size: 14px;
 	color: #fff;
 	line-height: 50px;
 	text-align: center;
-	transition: .2s ease-out;
+	transition: .15s ease-out;
 	font-family: 'webfont', Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
 }
 .addContent{
 	display: none;
 	position: fixed;
+	z-index: 9;
 	width: 100%;
 	height: 100%;
 	top: 0;

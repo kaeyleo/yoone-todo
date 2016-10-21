@@ -4,26 +4,33 @@ var render = Render();
 //入口
 render.init();
 
+//主题颜色 个性化 配置
+var mainColor = '#25b99a';
+var secColor = '#FFC107';
+$('#header').css('background-color', mainColor);
+$('#addBtn').css('background-color', secColor);
+
+
 //添加新的任务
 $('#addBtn').click(function(event) {
 	if($('#addContent').css('display')==='none') {
 		$('#addContent').fadeIn(100);
 		$('#value').focus();
 		//按钮旋转
-		$('#addBtn').css({
+		$('#addBtn svg').css({
 			'transform': 'rotate(-45deg)',
 			'-webkit-transform': 'rotate(-45deg)'
 		});
 		//弹出子按钮
-		$('.okAddBtn').css('bottom', '200px');
+		$('.okAddBtn').css('bottom', '90px');
 	}else{
 		$('#addContent').fadeOut(200);
 		//按钮旋转
-		$('#addBtn').css({
+		$('#addBtn svg').css({
 			'transform': 'rotate(0deg)',
 			'-webkit-transform': 'rotate(0deg)'
 		});
-		$('.okAddBtn').css('bottom', '30px');
+		$('.okAddBtn').css('bottom', '5px');
 	}		
 });
 
@@ -34,11 +41,11 @@ $('.okAddBtn').click(function(event) {
 		model.addTask(text);
 		$('#value').val("");
 		$('#addContent').fadeOut(200);
-		$('#addBtn').css({
+		$('#addBtn svg').css({
 			'transform': 'rotate(0deg)',
 			'-webkit-transform': 'rotate(0deg)'
 		});
-		$('.okAddBtn').css('bottom', '30px');
+		$('.okAddBtn').css('bottom', '5px');
 		$('.okAddBtn').css('background-color', '#757575');
 	} 
 });
@@ -48,9 +55,8 @@ $('#value').bind('input propertychange', function(event) {
 		var vinput = $('#value').val();
 		//如果有输入则控件变色
 		if(vinput!=='') {
-			$('.okAddBtn').css('background-color', '#ff4081');
-
-			$('.add-task-input').css('border-bottom-color', '#000');
+			$('.okAddBtn').css('background-color', mainColor);
+			$('.add-task-input').css('border-bottom-color', '#212121');
 		}
 		//如果输入为空则控件变为默认色，待增加默认样式配置变量
 		if(vinput==='') {
