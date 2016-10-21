@@ -1,7 +1,10 @@
 var model = Model();
 var render = Render();
+
+//入口
 render.init();
 
+//添加新的任务
 $('#addBtn').click(function(event) {
 	if($('#addContent').css('display')==='none') {
 		$('#addContent').fadeIn(100);
@@ -24,6 +27,7 @@ $('#addBtn').click(function(event) {
 	}		
 });
 
+//确认添加任务
 $('.okAddBtn').click(function(event) {
 	var text = $('#value').val();
 	if(text) {
@@ -39,22 +43,27 @@ $('.okAddBtn').click(function(event) {
 	} 
 });
 
+//对input绑定输入监听
 $('#value').bind('input propertychange', function(event) {
-
 		var vinput = $('#value').val();
+		//如果有输入则控件变色
 		if(vinput!=='') {
 			$('.okAddBtn').css('background-color', '#ff4081');
+
+			$('.add-task-input').css('border-bottom-color', '#000');
 		}
+		//如果输入为空则控件变为默认色，待增加默认样式配置变量
 		if(vinput==='') {
 			$('.okAddBtn').css('background-color', '#757575');
+			$('.add-task-input').css('border-bottom-color', '#BDBDBD');
 		}
 });
 
 $("#task-list").on("click", ".finish",function() {
-	// $(this).parent().delay(400).fadeOut(300);
 	model.completeTask($(this).parent('.task-item').find('i').text());
  });
 
+//本地数据存储
 function Model() {
 	var taskItem;
 	var addTask = function(s) {
@@ -75,6 +84,7 @@ function Model() {
 	};
 }
 
+//列表渲染
 function Render() {
 	var tasks;
 	var taskTitle;
