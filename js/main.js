@@ -47,6 +47,7 @@ $('.okAddBtn').click(function(event) {
 		});
 		$('.okAddBtn').css('bottom', '5px');
 		$('.okAddBtn').css('background-color', '#757575');
+		$('#value').css('border-bottom-color', '#BDBDBD');
 	} 
 });
 
@@ -56,12 +57,12 @@ $('#value').bind('input propertychange', function(event) {
 		//如果有输入则控件变色
 		if(vinput!=='') {
 			$('.okAddBtn').css('background-color', mainColor);
-			$('.add-task-input').css('border-bottom-color', '#212121');
+			$('#value').css('border-bottom-color', '#212121');
 		}
 		//如果输入为空则控件变为默认色，待增加默认样式配置变量
 		if(vinput==='') {
 			$('.okAddBtn').css('background-color', '#757575');
-			$('.add-task-input').css('border-bottom-color', '#BDBDBD');
+			$('#value').css('border-bottom-color', '#BDBDBD');
 		}
 });
 
@@ -102,7 +103,7 @@ function Render() {
 			tasks = localStorage['sss'].split(',');
 			for(var i=tasks.length-1; i>0; i--) {
 				taskTitle = tasks[i];
-				taskItemHTML += '<li class="task-item"><span class="task-title">'+taskTitle+'</span><i>'+i+'</i><div class="finish"></div></li>';
+				taskItemHTML += '<li class="task-item"><span class="task-title">'+taskTitle+'</span><i>'+i+'</i><div class="finish"><svg viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><style type="text/css"><![CDATA[@font-face{font-family: ifont; src: url("//at.alicdn.com/t/font_1442373896_4754455.eot?#iefix") format("embedded-opentype"), url("//at.alicdn.com/t/font_1442373896_4754455.woff") format("woff"), url("//at.alicdn.com/t/font_1442373896_4754455.ttf") format("truetype"), url("//at.alicdn.com/t/font_1442373896_4754455.svg#ifont") format("svg");}]]></style></defs><g class="transform-group"><g transform="scale(0.015625, 0.015625)"><path d="M511.174192 67.649749c-244.689908 0-443.046558 198.358697-443.046558 443.046558 0 244.689908 198.35665 443.046558 443.046558 443.046558 244.686838 0 443.046558-198.35665 443.046558-443.046558C954.22075 266.00947 755.862054 67.649749 511.174192 67.649749zM511.174192 909.437801c-220.22061 0-398.741493-178.522929-398.741493-398.741493s178.520883-398.741493 398.741493-398.741493c220.218564 0 398.741493 178.522929 398.741493 398.741493S731.392756 909.437801 511.174192 909.437801zM708.859553 372.923478 475.452619 606.334505 357.927949 488.807788c-9.389858-9.387811-25.415856-8.580422-35.798321 1.802042-10.379395 10.377348-11.184737 26.405393-1.796926 35.793204l135.981021 135.983067c4.920056 4.916986 11.660574 7.03216 18.457374 6.442736 7.535627 0.639566 15.292288-1.917676 21.057595-7.684006L746.4548 410.518724c10.382465-10.382465 10.382465-27.212782 0-37.595246C736.074382 362.544083 719.240995 362.544083 708.859553 372.923478z"></path></g></g></svg></div></li>';
 			}
 			document.getElementById('task-list').innerHTML = taskItemHTML;
 			taskItemHTML = '';

@@ -90,7 +90,7 @@ body {
 	margin-left: 20px;
 }
 .task-item i {
-	// display: none;
+	display: none;
 }
 .task-title {
 	font-size: 16px;
@@ -103,8 +103,12 @@ body {
 	width: 30px;
 	height: 30px;
 	border-radius: 15px;
-	background-color: #cadce4;
+	// background-color: #cadce4;
 	cursor: pointer;
+	fill: #c5c9ce;
+}
+.finish:active {
+	fill: #25b99a;
 }
 .tips {
 	font-size: 20px;
