@@ -12,18 +12,38 @@ body, ul, li, header{
 }
 .app-header {
 	position: relative;
+	// background-color: #000;
 	width: 100%;
 	height: 100px;
-	/* background-color: #000; */
 }
 .app-menu {
-	width: 30px;
-	height: 30px;
-	background-color: #ccc;
+	width: 40px;
 	position: absolute;
 	top: 30px;
 	left: 5%;
+	padding: 3px 0;
+	border-radius: 3px;
 }
+.app-menu:active {
+	background-color: rgba(255, 255, 255, 0.2);
+}
+.mstrip {
+	margin: 6px auto;
+	width: 60%;
+	height: 2px;
+	border-radius: 10px;
+	background-color: #fff;
+	transform-origin: 0;
+}
+// .mstr-top {
+// 	transform: rotate(43deg);
+// }
+// .mstr-mid {
+// 	opacity: 0;
+// }
+// .mstr-bot{
+// 	transform: rotate(-43deg);
+// }
 .app-title {
 	margin: 0 auto;
 	width: 90px;

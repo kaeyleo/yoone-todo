@@ -108,9 +108,9 @@ function Render() {
 	};
 }
 
-//个性化-换肤
+// menu
 $('#menu-btn').click(function(event) {
-	$('.app').css('background', 'red');
+	console.log('hello');
 });
 
 
