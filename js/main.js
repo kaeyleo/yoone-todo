@@ -12,7 +12,7 @@ $('#addBtn').click(function(event) {
 			'-webkit-transform': 'rotate(-45deg)'
 		});
 		//弹出子按钮
-		$('.okAddBtn').css('bottom', '30%');
+		$('.okAddBtn').css('bottom', '200px');
 	}else{
 		$('#addContent').fadeOut(200);
 		//按钮旋转
@@ -20,7 +20,7 @@ $('#addBtn').click(function(event) {
 			'transform': 'rotate(0deg)',
 			'-webkit-transform': 'rotate(0deg)'
 		});
-		$('.okAddBtn').css('bottom', '4%');
+		$('.okAddBtn').css('bottom', '30px');
 	}		
 });
 
@@ -34,7 +34,7 @@ $('.okAddBtn').click(function(event) {
 			'transform': 'rotate(0deg)',
 			'-webkit-transform': 'rotate(0deg)'
 		});
-		$('.okAddBtn').css('bottom', '4%');
+		$('.okAddBtn').css('bottom', '30px');
 		$('.okAddBtn').css('background-color', '#757575');
 	} 
 });
@@ -97,3 +97,16 @@ function Render() {
 		init: init
 	};
 }
+
+//个性化-换肤
+$('#menu-btn').click(function(event) {
+	$('.app').css('background', 'red');
+});
+
+
+
+
+
+
+
+
