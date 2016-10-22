@@ -2,6 +2,9 @@ body, ul, li, header{
 	padding: 0;
 	margin: 0 auto;
 }
+li {
+	list-style: none;
+}
 body {
 	background-color: #edf0f1;
 }
@@ -20,23 +23,23 @@ body {
 	z-index: 8;
 	background-color: #25b99a;
 	width: 100%;
-	height: 70px;
-	box-shadow: 0 2px 3px rgba(44,62,80,0.16);
+	height: 60px;
+	box-shadow: 0 2px 6px rgba(44,62,80, 0.2);
 }
 .app-title {
 	margin: 0 auto;
 	width: 90px;
 	height: 100%;
-	font-size: 24px;
+	font-size: 22px;
 	color: #fff;
 	font-family: STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
 	letter-spacing: 1px;
-	margin-top: 25px;
+	margin-top: 22px;
 }
 .app-menu {
 	width: 40px;
 	position: absolute;
-	top: 18px;
+	top: 14px;
 	left: 5%;
 	padding: 3px 0;
 	border-radius: 3px;
@@ -75,10 +78,10 @@ body {
 	position: relative;
 	list-style: none;
 	width: 90%;
-	padding: 30px 0;
+	padding: 20px 0;
 	background-color: #fff;
 	border-radius: 3px;
-	box-shadow: 0 3px 4px rgba(0, 0, 0, .1);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
 	overflow: auto;
 	margin-bottom: 15px;
 }
@@ -98,7 +101,7 @@ body {
 }
 .finish {
 	position: absolute;
-	top: 23px;
+	top: 15px;
 	right: 20px;
 	width: 30px;
 	height: 30px;
@@ -186,3 +189,54 @@ input{
 	outline: none;
 	border: 0;
 }
+.cover {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 2;
+	width: 100%;
+	height: 100%;
+	background-color: #000;
+	opacity: 0;
+	transition: .3s ease;
+}
+.menu-content {
+	// display: none;
+	position: fixed;
+	top: 0;
+	left: -260px;
+	z-index: 3;
+	width: 250px;
+	height: 100%;
+	background-color: #fff;
+	transition: .3s ease;
+}
+.menu-list {
+	width: 100%;
+	height: 300px;
+	margin-top: 80px;
+}
+.menu-item {
+	position: relative;
+	height: 50px;
+	transition: .3s;
+}
+.menu-item:hover, .menu-item:active {
+	background-color: #eee;
+}
+.menu-text {
+	position: absolute;
+	left: 65px;
+	top: 15px;
+	font-size: 18px;
+	color: #515151;
+	font-family: 'webfont', Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
+}
+.icon-skin {
+	position: absolute;
+	left: 30px;
+	top: 14px;
+	width: 22px;
+	height: 22px;
+}
+

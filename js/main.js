@@ -117,7 +117,18 @@ function Render() {
 
 // menu
 $('#menu-btn').click(function(event) {
-	console.log('hello');
+	if ($('.menu-content').css('left')=='-260px') {
+		$('.menu-content').css('left', '0');
+		$('.cover').css('opacity', '.3');
+	}else {
+		$('.menu-content').css('left', '-260px');
+		$('.cover').css('opacity', '0');
+	}
+});
+
+$('.cover').click(function(event) {
+	$('.menu-content').css('left', '-260px');
+	$(this).css('opacity', '0');
 });
 
 
