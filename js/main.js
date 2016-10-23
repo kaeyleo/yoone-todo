@@ -4,12 +4,6 @@ var render = Render();
 //入口
 render.init();
 
-//主题颜色 个性化 配置
-var mainColor = '#25b99a';
-var secColor = '#FFC107';
-$('#header').css('background-color', mainColor);
-$('#addBtn').css('background-color', secColor);
-
 
 //添加新的任务
 $('#addBtn').click(function(event) {
@@ -56,7 +50,7 @@ $('#value').bind('input propertychange', function(event) {
 		var vinput = $('#value').val();
 		//如果有输入则控件变色
 		if(vinput!=='') {
-			$('.okAddBtn').css('background-color', mainColor);
+			$('.okAddBtn').css('background-color', appColor().mainColor);
 			$('#value').css('border-bottom-color', '#212121');
 		}
 		//如果输入为空则控件变为默认色，待增加默认样式配置变量
@@ -90,14 +84,14 @@ function Model() {
 		completeTask: completeTask
 	};
 }
-
-//列表渲染
+//页面渲染
 function Render() {
 	var tasks;
 	var taskTitle;
 	var taskItemHTML='';
-
 	var init = function() {
+		//app主题色
+		appColor();
 		document.getElementById('task-list').innerHTML = '';
 		try {
 			tasks = localStorage['sss'].split(',');
@@ -114,14 +108,12 @@ function Render() {
 		init: init
 	};
 }
-
-// menu
+// 菜单按钮
 $('#menu-btn').click(function(event) {
 	if ($('.menu-content').css('left')=='-260px') {
 		$('.menu-content').css('left', '0');
 		$('.cover').fadeIn('60');
 	}else {
-		//cover 状态flag，如果打开了自选项cover则不变，否则改变
 		hideSidebar();
 		$('.cover').fadeOut('60');
 	}
@@ -132,6 +124,7 @@ $('.cover').click(function(event) {
 	$('.cover').fadeOut('60');
 });
 
+//菜单选项调用页面
 $('.menu-item').click(function(event) {
 	hideSidebar();
 	var data = $(this).attr('data');
@@ -146,27 +139,27 @@ $('.menu-item').click(function(event) {
 			console.log('no data');
 	}
 });
-
 //关闭侧边栏 hide sidebar
 function hideSidebar() {
 	$('.menu-content').css('left', '-260px');
 }
-
+//菜单呼出页面种类：卡片式，页面
 var MenuItemFunc = (function () {
 	var changeColor = function () {
 		subMenuPanel();
-		console.log('change color!');
+		colorPanel();
 	};
 	var about = function() {
-		console.log('about app');
+		subMenuPanel();
+		aboutPanel()
 	};
 	return {
 		changeColor: changeColor,
 		aboutApp: about
 	};
 })();
-
-function subMenuPanel() {
+//菜单卡片
+var subMenuPanel = function() {
 	$('.menu-subCard').fadeIn('200');
 	$('#menu-btn').fadeOut('fast');
 	$('#back-btn').fadeIn('fast');
@@ -178,6 +171,31 @@ function subMenuPanel() {
 		$('#back-btn').fadeOut('fast');
 	});
 }
-
+//配置主题颜色
+function appColor() {
+	var mainColor = localStorage.yoone_color || '#25b99a';
+	var secColor = '#FFC107';
+	$('#header').css('background-color', mainColor);
+	$('#addBtn').css('background-color', secColor);
+	return {
+		mainColor: mainColor
+	};
+}
+//组装颜色面板
+function colorPanel() {
+	var html = '<ul class=setColorPanel><li class=colorItem data=#25b99a><span>文艺药丸</span><div class=colorBlock><div class=cgreen></div><div class=cgwhite></div></div><li class=colorItem data=#F44336><span>大力药丸</span><div class=colorBlock><div class=cred></div><div class=crwhite></div></div><li class=colorItem data=#2196F3><span>高冷药丸</span><div class=colorBlock><div class=cblue></div><div class=cbwhite></div></div></ul>';
+	$('.menu-subCard').html(html);
+	$('.colorItem').click(function(event) {
+		mainColor = $(this).attr('data');
+		//颜色 本地存储
+		localStorage.yoone_color = mainColor;
+		appColor();
+	});
+}
+//组装关于面板
+function aboutPanel() {
+	var html = '<div class=aboutApp><p><b>药丸清单，一个专治拖延症患者的应用。</b><br>当日事必当日毕，当天任务日后即焚。<br>当前为测试版本，持续更新中...<br><br>@2016 <a href="http://liaokeyu.com/about.html" target="_blank">廖柯宇</a></div>';
+	$('.menu-subCard').html(html);
+}
 
 

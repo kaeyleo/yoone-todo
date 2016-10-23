@@ -8,23 +8,23 @@ li {
 body {
 	background-color: #edf0f1;
 }
-// .app {
-// 	position: fixed;
-// 	top: 0;
-// 	width: 100%;
-// 	height: 100%;
-// 	overflow: scroll;
-// 	background-color: #edf0f1;
-// }
+input, button{
+	outline: none;
+	border: 0;
+}
+p, a, span, input, .okAddBtn {
+	font-family: "PingFang SC","Helvetica Neue","Hiragino Sans GB","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif;
+}
+
 .app-header {
 	position: fixed;
 	top: 0;
 	left: 0;
 	z-index: 8;
-	background-color: #25b99a;
 	width: 100%;
 	height: 60px;
 	box-shadow: 0 2px 6px rgba(44,62,80, 0.2);
+	transition: .5s ease;
 }
 .app-title {
 	margin: 0 auto;
@@ -32,7 +32,6 @@ body {
 	height: 100%;
 	font-size: 22px;
 	color: #fff;
-	font-family: STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
 	letter-spacing: 1px;
 	margin-top: 20px;
 }
@@ -68,21 +67,10 @@ body {
 .app-back svg {
 	width: 100%;
 	height: 100%;
-	fill: #000;
 }
 .app-back:active {
 	background-color: rgba(255, 255, 255, 0.2);
 }
-// .mstr-top {
-// 	transform: rotate(43deg);
-// }
-// .mstr-mid {
-// 	opacity: 0;
-// }
-// .mstr-bot{
-// 	transform: rotate(-43deg);
-// }
-
 .app-main {	
 	position: relative;
 	top: 90px;
@@ -115,7 +103,6 @@ body {
 }
 .task-title {
 	font-size: 16px;
-	font-family: Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
 }
 .finish {
 	position: absolute;
@@ -178,7 +165,6 @@ body {
 	line-height: 50px;
 	text-align: center;
 	transition: .15s ease-out;
-	font-family: 'webfont', Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
 }
 .addContent{
 	display: none;
@@ -198,14 +184,8 @@ body {
 	background-color: transparent;
 	border-bottom: 2px solid #BDBDBD;
 	font-size: 22px;
-	font-family: 'webfont', Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
 	color: #212121;
-	line-height: 30px;
 	transition: .3s ease;
-}
-input{
-	outline: none;
-	border: 0;
 }
 .cover {
 	position: fixed;
@@ -246,11 +226,10 @@ input{
 .menu-text {
 	position: absolute;
 	left: 65px;
-	top: 24px;
+	top: 21.5px;
 	font-size: 16px;
-	color: #515151;
+	color: #757575;
 	letter-spacing: 1px;
-	font-family: 'webfont', Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
 }
 .menu-item svg {
 	position: absolute;
@@ -269,10 +248,17 @@ input{
 	border-radius: 3px;
 	background-color: #fff;
 	box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
-	animation: flyup .5s;
+	animation: flyup .4s;
+	-webkit-animation: flyup .4s;
 	animation-fill-mode: forwards;
+	-webkit-animation-fill-mode: forwards;
 }
 @keyframes flyup{
+	to {
+		top: 160px;
+	}
+}
+@-webkit-keyframes flyup{
 	to {
 		top: 160px;
 	}
@@ -283,36 +269,38 @@ input{
 .colorItem {
 	position: relative;
 	height: 60px;
-	// background-color: #ccc;
+	cursor: pointer;
+}
+.colorItem:active {
+	background-color: #eee;
 }
 .colorItem span{
 	position: absolute;
-	top: 23px;
-	left: 90px;
+	top: 20px;
+	left: 23%;
 	font-size: 16px;
 	letter-spacing: 1px;
 	color: #616161;
-	font-family: 'webfont', Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
 }
 .colorBlock {
 	position: absolute;
 	top: 21px;
-	left: 160px;
-	width: 80px;
+	right: 26%;
+	width: 70px;
 	height: 20px;
 	border-radius: 10px;
 	overflow: hidden;
 }
 .colorBlock div {
 	float: left;
-	width: 40px;
-	height: 100%;
+	width: 35px;
+	height: 20px;
 }
 .cgreen {
 	background-color: #25b99a;
 }
-.cyellow {
-	background-color: #FFC107;
+.cgwhite {
+	background-color: #E8F5E9;
 }
 .cred {
 	background-color: #F44336;
@@ -325,4 +313,16 @@ input{
 }
 .cbwhite {
 	background-color: #E3F2FD;
+}
+.aboutApp p{
+	width: 300px;
+	margin: 0 auto;
+	font-size: 16px;
+	color: ;
+	line-height: 30px;
+	padding: 30px 0;
+	text-align: center;
+}
+.aboutApp a{
+	color: #000;
 }
