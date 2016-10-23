@@ -119,22 +119,65 @@ function Render() {
 $('#menu-btn').click(function(event) {
 	if ($('.menu-content').css('left')=='-260px') {
 		$('.menu-content').css('left', '0');
-		$('.cover').css('opacity', '.3');
+		$('.cover').fadeIn('60');
 	}else {
-		$('.menu-content').css('left', '-260px');
-		$('.cover').css('opacity', '0');
+		//cover 状态flag，如果打开了自选项cover则不变，否则改变
+		hideSidebar();
+		$('.cover').fadeOut('60');
 	}
 });
 
 $('.cover').click(function(event) {
-	$('.menu-content').css('left', '-260px');
-	$(this).css('opacity', '0');
+	hideSidebar();
+	$('.cover').fadeOut('60');
 });
 
+$('.menu-item').click(function(event) {
+	hideSidebar();
+	var data = $(this).attr('data');
+	switch(data) {
+		case 'changeColor':
+			MenuItemFunc.changeColor();
+			break;
+		case 'about':
+			MenuItemFunc.aboutApp();
+			break;
+		default:
+			console.log('no data');
+	}
+});
 
+//关闭侧边栏 hide sidebar
+function hideSidebar() {
+	$('.menu-content').css('left', '-260px');
+}
 
+var MenuItemFunc = (function () {
+	var changeColor = function () {
+		subMenuPanel();
+		console.log('change color!');
+	};
+	var about = function() {
+		console.log('about app');
+	};
+	return {
+		changeColor: changeColor,
+		aboutApp: about
+	};
+})();
 
-
+function subMenuPanel() {
+	$('.menu-subCard').fadeIn('200');
+	$('#menu-btn').fadeOut('fast');
+	$('#back-btn').fadeIn('fast');
+	//关闭当前菜单选项
+	$('.cover, #back-btn').click(function(event) {
+		$('.cover').fadeOut('fast');
+		$('.menu-subCard').fadeOut('fast');
+		$('#menu-btn').fadeIn('fast');
+		$('#back-btn').fadeOut('fast');
+	});
+}
 
 
 

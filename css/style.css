@@ -1,4 +1,4 @@
-body, ul, li, header{
+body, div, ul, li, header{
 	padding: 0;
 	margin: 0 auto;
 }
@@ -34,7 +34,7 @@ body {
 	color: #fff;
 	font-family: STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
 	letter-spacing: 1px;
-	margin-top: 22px;
+	margin-top: 20px;
 }
 .app-menu {
 	width: 40px;
@@ -54,6 +54,24 @@ body {
 	border-radius: 10px;
 	background-color: #fff;
 	transform-origin: 0;
+}
+.app-back {
+	display: none;
+	position: absolute;
+	top: 15px;
+	left: 5%;
+	border-radius: 3px;
+	padding: 5px;
+	width: 24px;
+	height: 24px;
+}
+.app-back svg {
+	width: 100%;
+	height: 100%;
+	fill: #000;
+}
+.app-back:active {
+	background-color: rgba(255, 255, 255, 0.2);
 }
 // .mstr-top {
 // 	transform: rotate(43deg);
@@ -197,8 +215,8 @@ input{
 	width: 100%;
 	height: 100%;
 	background-color: #000;
-	opacity: 0;
-	transition: .3s ease;
+	opacity: 0.4;
+	display: none;
 }
 .menu-content {
 	// display: none;
@@ -218,7 +236,8 @@ input{
 }
 .menu-item {
 	position: relative;
-	height: 50px;
+	height: 60px;
+	cursor: pointer;
 	transition: .3s;
 }
 .menu-item:hover, .menu-item:active {
@@ -227,16 +246,83 @@ input{
 .menu-text {
 	position: absolute;
 	left: 65px;
-	top: 15px;
-	font-size: 18px;
+	top: 24px;
+	font-size: 16px;
 	color: #515151;
+	letter-spacing: 1px;
 	font-family: 'webfont', Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
 }
-.icon-skin {
+.menu-item svg {
 	position: absolute;
 	left: 30px;
-	top: 14px;
-	width: 22px;
-	height: 22px;
+	top: 22px;
+	width: 20px;
+	height: 20px;
 }
-
+.menu-subCard {
+	display: none;
+	position: fixed;
+	z-index: 2;
+	width: 90%;
+	left: 5%;
+	top: 220px;
+	border-radius: 3px;
+	background-color: #fff;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+	animation: flyup .5s;
+	animation-fill-mode: forwards;
+}
+@keyframes flyup{
+	to {
+		top: 160px;
+	}
+}
+.setColorPanel {
+	padding: 20px 0;
+}
+.colorItem {
+	position: relative;
+	height: 60px;
+	// background-color: #ccc;
+}
+.colorItem span{
+	position: absolute;
+	top: 23px;
+	left: 90px;
+	font-size: 16px;
+	letter-spacing: 1px;
+	color: #616161;
+	font-family: 'webfont', Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
+}
+.colorBlock {
+	position: absolute;
+	top: 21px;
+	left: 160px;
+	width: 80px;
+	height: 20px;
+	border-radius: 10px;
+	overflow: hidden;
+}
+.colorBlock div {
+	float: left;
+	width: 40px;
+	height: 100%;
+}
+.cgreen {
+	background-color: #25b99a;
+}
+.cyellow {
+	background-color: #FFC107;
+}
+.cred {
+	background-color: #F44336;
+}
+.crwhite {
+	background-color: #FFEBEE;
+}
+.cblue {
+	background-color: #2196F3;
+}
+.cbwhite {
+	background-color: #E3F2FD;
+}
