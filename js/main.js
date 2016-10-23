@@ -194,7 +194,7 @@ function colorPanel() {
 }
 //组装关于面板
 function aboutPanel() {
-	var html = '<div class=aboutApp><p><b>药丸清单，一个专治拖延症患者的应用。</b><br>当日事必当日毕，当天任务日后即焚。<br>当前为测试版本，持续更新中...<br><br>@2016 <a href="http://liaokeyu.com/about.html" target="_blank">廖柯宇</a></div>';
+	var html = '<div class=aboutApp><p><b>药丸清单，一个专治拖延症患者的应用。</b><br>当前为测试版本，持续更新中...<br><br>@2016 <a href="http://liaokeyu.com/about.html" target="_blank">廖柯宇</a></div>';
 	$('.menu-subCard').html(html);
 }
 
