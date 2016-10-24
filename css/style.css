@@ -23,17 +23,23 @@ p, a, span, input, .okAddBtn {
 	z-index: 8;
 	width: 100%;
 	height: 60px;
-	box-shadow: 0 2px 6px rgba(44,62,80, 0.2);
-	transition: .5s ease;
+	box-shadow: 0 2px 4px rgba( 0, 0, 0, 0.25);
+	transition: top .4s ease, background-color .5s;
+}
+.headerUp{
+	top: -65px;
+}
+.headerDown{
+	top: 0;
 }
 .app-title {
 	margin: 0 auto;
-	width: 90px;
 	height: 100%;
 	font-size: 22px;
 	color: #fff;
 	letter-spacing: 1px;
 	margin-top: 20px;
+	text-align: center;
 }
 .app-menu {
 	width: 40px;
@@ -73,19 +79,25 @@ p, a, span, input, .okAddBtn {
 }
 .app-main {	
 	position: relative;
-	top: 90px;
+	top: 80px;
 }
-.list {
+.todo-list {
+	position: absolute;
+	display: none;
 	width: 100%;
 	padding: 0;
-	// margin: 0 auto 100px auto;
 	margin: 0 auto;
-	padding-bottom: 30px;
-	border-bottom: 2px solid #ccc;
+	padding-bottom: 100px;
 }
 .completed-list {
+	position: absolute;
+	display: none;
 	width: 100%;
-	height: 100px;
+	padding-bottom: 100px;
+}
+.completed-list span {
+	opacity: .4;
+	text-decoration: line-through;
 }
 .task-item {
 	position: relative;
@@ -94,7 +106,7 @@ p, a, span, input, .okAddBtn {
 	padding: 20px 0;
 	background-color: #fff;
 	border-radius: 3px;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+	box-shadow: 0 1px 1px rgba(0, 0, 0, .12);
 	overflow: auto;
 	margin-bottom: 15px;
 }
@@ -105,9 +117,10 @@ p, a, span, input, .okAddBtn {
 	float: left;
 	width: 70%;
 	margin-left: 14px;
+	font-weight: 200;
 }
 .task-item i {
-	// display: none;
+	display: none;
 }
 .task-item svg {
 	width: 28px;
@@ -123,15 +136,15 @@ p, a, span, input, .okAddBtn {
 .clear {
 	position: absolute;
 	top: 12px;
-	right: 54px;
+	right: 52px;
 }
 .completed-list .clear{
-	right: 14px;
+	right: 12px;
 }
 .finish {
 	position: absolute;
 	top: 12px;
-	right: 14px;
+	right: 12px;
 }
 .tips {
 	font-size: 20px;
@@ -144,7 +157,13 @@ p, a, span, input, .okAddBtn {
 	bottom: 3%;
 	right: 5%;
 	z-index: 10;
-	// background-color: #000;
+	transition: bottom .3s ease-out;
+}
+.btnDown{
+	bottom: -60px;
+}
+.btnUp{
+	bottom: 3%;
 }
 .addBtn {
 	position: relative;
@@ -153,9 +172,7 @@ p, a, span, input, .okAddBtn {
 	height: 60px;
 	background-color: #FFC107;
 	border-radius: 100px;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, .2);
-	transition: .2s ease;
-	// opacity: .5;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, .2);
 }
 .addBtn svg {
 	width: 20px;
@@ -174,7 +191,7 @@ p, a, span, input, .okAddBtn {
 	height: 50px;
 	background-color: #757575;
 	border-radius: 100px;
-	box-shadow: 0 2px 6px rgba(0, 0, 0, .3);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
 	font-size: 14px;
 	color: #fff;
 	line-height: 50px;
@@ -214,7 +231,6 @@ p, a, span, input, .okAddBtn {
 	display: none;
 }
 .menu-content {
-	// display: none;
 	position: fixed;
 	top: 0;
 	left: -260px;
@@ -241,7 +257,7 @@ p, a, span, input, .okAddBtn {
 .menu-text {
 	position: absolute;
 	left: 65px;
-	top: 21.5px;
+	top: 21px;
 	font-size: 16px;
 	color: #757575;
 	letter-spacing: 1px;
@@ -310,6 +326,23 @@ p, a, span, input, .okAddBtn {
 	float: left;
 	width: 35px;
 	height: 20px;
+}
+.shake {
+	animation: shake .3s;
+}
+@keyframes shake {
+	30%{
+		transform: rotate(10deg);
+	}
+	50%{
+		transform: rotate(0deg);
+	}
+	80%{
+		transform: rotate(-10deg);
+	}
+	100%{
+		transform: rotate(0deg);
+	}
 }
 .cgreen {
 	background-color: #25b99a;
