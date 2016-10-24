@@ -78,7 +78,14 @@ p, a, span, input, .okAddBtn {
 .list {
 	width: 100%;
 	padding: 0;
-	margin: 0 auto 120px auto;
+	// margin: 0 auto 100px auto;
+	margin: 0 auto;
+	padding-bottom: 30px;
+	border-bottom: 2px solid #ccc;
+}
+.completed-list {
+	width: 100%;
+	height: 100px;
 }
 .task-item {
 	position: relative;
@@ -96,27 +103,35 @@ p, a, span, input, .okAddBtn {
 }
 .task-item span{
 	float: left;
-	margin-left: 20px;
+	width: 70%;
+	margin-left: 14px;
 }
 .task-item i {
-	display: none;
+	// display: none;
+}
+.task-item svg {
+	width: 28px;
+	height: 28px;
+	// background-color: #cadce4;
+	cursor: pointer;
+	fill: #c5c9ce;
+	padding: 6px;
 }
 .task-title {
 	font-size: 16px;
 }
+.clear {
+	position: absolute;
+	top: 12px;
+	right: 54px;
+}
+.completed-list .clear{
+	right: 14px;
+}
 .finish {
 	position: absolute;
-	top: 15px;
-	right: 20px;
-	width: 30px;
-	height: 30px;
-	border-radius: 15px;
-	// background-color: #cadce4;
-	cursor: pointer;
-	fill: #c5c9ce;
-}
-.finish:active {
-	fill: #25b99a;
+	top: 12px;
+	right: 14px;
 }
 .tips {
 	font-size: 20px;
