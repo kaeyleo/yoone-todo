@@ -12,10 +12,9 @@ input, button{
 	outline: none;
 	border: 0;
 }
-p, a, span, input, .okAddBtn {
+p, a, span, input, .app-title, .okAddBtn {
 	font-family: "PingFang SC","Helvetica Neue","Hiragino Sans GB","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif;
 }
-
 .app-header {
 	position: fixed;
 	top: 0;
@@ -38,7 +37,7 @@ p, a, span, input, .okAddBtn {
 	font-size: 22px;
 	color: #fff;
 	letter-spacing: 1px;
-	margin-top: 20px;
+	line-height: 60px;
 	text-align: center;
 }
 .app-menu {
@@ -106,7 +105,7 @@ p, a, span, input, .okAddBtn {
 	padding: 20px 0;
 	background-color: #fff;
 	border-radius: 3px;
-	box-shadow: 0 1px 1px rgba(0, 0, 0, .12);
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
 	overflow: auto;
 	margin-bottom: 15px;
 }
@@ -275,7 +274,7 @@ p, a, span, input, .okAddBtn {
 	z-index: 2;
 	width: 90%;
 	left: 5%;
-	top: 220px;
+	top: 200px;
 	border-radius: 3px;
 	background-color: #fff;
 	box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
@@ -329,8 +328,23 @@ p, a, span, input, .okAddBtn {
 }
 .shake {
 	animation: shake .3s;
+	-webkit-animation: shake .3s;
 }
 @keyframes shake {
+	30%{
+		transform: rotate(10deg);
+	}
+	50%{
+		transform: rotate(0deg);
+	}
+	80%{
+		transform: rotate(-10deg);
+	}
+	100%{
+		transform: rotate(0deg);
+	}
+}
+@-webkit-keyframes shake {
 	30%{
 		transform: rotate(10deg);
 	}

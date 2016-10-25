@@ -3,6 +3,8 @@ localStorage.removeItem('sss');
 
 var model = Model(),
 	render = Render();
+
+
 //入口
 render.init();
 //默认显示todo列表页面
@@ -11,68 +13,80 @@ $('#task-list').show();
 /*
 	==================================================================================
 										任务管理
-					1. 添加任务，按钮动效 √
-					2. 确认添加按钮 √
-					3. input输入监听，验证有无输入 √
+					1. 添加任务按钮 模块
+						|-1. 添加任务，按钮动效 √
+						|-2. 确认添加按钮 √
+						|-3. input输入监听，验证有无输入 √
 					4. 任务列表项 清除/完成 点击操作 √
 					5. 本地存储 添加/清除/完成 √
 					6. 任务列表渲染器 √
 	==================================================================================
 */
-//添加新的任务
-$('#addBtn').click(function(event) {
-	if($('#addContent').css('display')==='none') {
-		$('#addContent').fadeIn(100);
-		$('#value').focus();
-		//按钮旋转
-		$('#addBtn svg').css({
-			'transform': 'rotate(-45deg)',
-			'-webkit-transform': 'rotate(-45deg)'
-		});
-		//弹出子按钮
-		$('.okAddBtn').css('bottom', '90px');
-	}else{
-		$('#addContent').fadeOut(200);
-		//按钮旋转
-		$('#addBtn svg').css({
-			'transform': 'rotate(0deg)',
-			'-webkit-transform': 'rotate(0deg)'
-		});
-		$('.okAddBtn').css('bottom', '5px');
-	}		
-});
-
-//确认添加任务
-$('.okAddBtn').click(function(event) {
-	var text = $('#value').val();
-	if(text) {
-		model.addTask(text);
-		$('#value').val("");
-		$('#addContent').fadeOut(200);
-		$('#addBtn svg').css({
-			'transform': 'rotate(0deg)',
-			'-webkit-transform': 'rotate(0deg)'
-		});
-		$('.okAddBtn').css('bottom', '5px');
-		$('.okAddBtn').css('background-color', '#757575');
-		$('#value').css('border-bottom-color', '#BDBDBD');
-	} 
-});
-
-//对input绑定输入监听
-$('#value').bind('input propertychange', function(event) {
-		var vinput = $('#value').val();
-		//如果有输入则控件变色
-		if(vinput!=='') {
-			$('.okAddBtn').css('background-color', appColor().mainColor);
-			$('#value').css('border-bottom-color', '#212121');
-		}
-		//如果输入为空则控件变为默认色，待增加默认样式配置变量
-		if(vinput==='') {
-			$('.okAddBtn').css('background-color', '#757575');
-			$('#value').css('border-bottom-color', '#BDBDBD');
-		}
-});
+//添加任务按钮模块
+(function(){
+	var btnSVG = $('#addBtn svg'),
+		addTaskContent = $('#addContent'),
+		okAddBtn = $('.okAddBtn'),
+		input = $('#value');
+	//添加新的任务
+	$('#addBtn').click(function(event) {
+		if(addTaskContent.css('display')==='none') {
+			addTaskContent.show('100');
+			input.focus();
+			//按钮旋转
+			btnSVG.css({
+				'transform': 'rotate(-45deg)',
+				'-webkit-transform': 'rotate(-45deg)'
+			});
+			//弹出子按钮
+			okAddBtn.css('bottom', '90px');
+		}else{
+			addTaskContent.hide('100');
+			//按钮旋转
+			btnSVG.css({
+				'transform': 'rotate(0deg)',
+				'-webkit-transform': 'rotate(0deg)'
+			});
+			okAddBtn.css('bottom', '5px');
+		}		
+	});
+	//确认添加任务
+	okAddBtn.click(function(event) {
+		var text = input.val();
+		if(text) {
+			model.addTask(text);
+			input.val("");
+			addTaskContent.fadeOut('100');
+			btnSVG.css({
+				'transform': 'rotate(0deg)',
+				'-webkit-transform': 'rotate(0deg)'
+			});
+			okAddBtn.css('bottom', '5px');
+			okAddBtn.css('background-color', '#757575');
+			input.css('border-bottom-color', '#BDBDBD');
+			//关闭侧边栏和遮罩
+			hideSidebar();
+			$('.cover').hide('200');
+			//切换到todo列表
+			MenuItemFunc.listPage('todo');
+			
+		} 
+	});
+	//对input绑定输入监听
+	input.bind('input propertychange', function(event) {
+			var vinput = input.val();
+			//如果有输入则控件变色
+			if(vinput!=='') {
+				okAddBtn.css('background-color', appColor().mainColor);
+				input.css('border-bottom-color', '#212121');
+			}
+			//如果输入为空则控件变为默认色，待增加默认样式配置变量
+			if(vinput==='') {
+				okAddBtn.css('background-color', '#757575');
+				input.css('border-bottom-color', '#BDBDBD');
+			}
+	});
+})();
 
 /*
 *	任务项里的 清除/完成 操作
@@ -92,14 +106,6 @@ $("#completed-list").on("click", ".clear",function() {
 
 // localStorage.removeItem('yoone_completed');
 // console.log(localStorage.getItem('yoone_completed'));
-
-//显示完成列表
-if(localStorage['yoone_completed']){
-	var newArr = localStorage['yoone_completed'].split(',');
-	for(var i = 1; i<newArr.length; i++) {
-		$('#completed-list').prepend('<li class="task-item"><span class="task-title">'+newArr[i]+'</span><i>'+i+'</i><div class="clear"><svg width="128px" height="128.00px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M885.960599 229.332129 139.025868 229.332129c-13.322423 0-24.092721-10.770298-24.092721-24.092721 0-13.302981 10.770298-24.097838 24.092721-24.097838l746.93473 0c13.323447 0 24.092721 10.794857 24.092721 24.097838C910.05332 218.561831 899.284045 229.332129 885.960599 229.332129L885.960599 229.332129zM645.010875 132.956128l-265.036305 0c-13.323447 0-24.097838-10.770298-24.097838-24.097838 0-13.297864 10.774391-24.093744 24.097838-24.093744l265.036305 0c13.328563 0 24.098861 10.796904 24.098861 24.093744C669.109736 122.186853 658.340461 132.956128 645.010875 132.956128L645.010875 132.956128zM404.06729 759.409856 404.06729 349.805968c0-13.301957 10.769274-24.097838 24.092721-24.097838 13.328563 0 24.097838 10.79588 24.097838 24.097838l0 409.603889c0 13.32754-10.769274 24.097838-24.097838 24.097838C414.837588 783.507694 404.06729 772.738419 404.06729 759.409856L404.06729 759.409856zM572.728618 759.409856 572.728618 349.805968c0-13.301957 10.773368-24.097838 24.097838-24.097838 13.323447 0 24.092721 10.79588 24.092721 24.097838l0 409.603889c0 13.32754-10.769274 24.097838-24.092721 24.097838C583.501986 783.507694 572.728618 772.738419 572.728618 759.409856L572.728618 759.409856zM235.406986 301.615409c13.32447 0 24.093744 10.796904 24.093744 24.092721l0 28.528754 0 91.946109 0 385.510144c0 26.600845 21.590737 48.192605 48.190559 48.192605l409.603889 0c26.599821 0 48.190559-21.591761 48.190559-48.192605l0-385.510144 0-91.946109 0-28.528754c0-13.296841 10.769274-24.092721 24.093744-24.092721 13.32754 0 24.097838 10.796904 24.097838 24.092721l0 96.383164 0 24.091698 0 409.609005c0 39.924291-32.361035 72.285327-72.284303 72.285327L283.593452 928.077324c-39.923268 0-72.284303-32.361035-72.284303-72.285327L211.309148 490.398006l0-44.215014 0-24.091698 0-96.383164C211.309148 312.412312 222.083539 301.615409 235.406986 301.615409L235.406986 301.615409zM235.406986 301.615409" /></svg></div></li>');
-	}
-}
 
 //本地数据存储
 function Model() {
@@ -144,7 +150,6 @@ function Render() {
 	var tasks,
 		taskTitle,
 		taskItemHTML='';
-
 	var init = function(el) {
 		var el = el || '#task-list',
 			listName,
@@ -184,10 +189,10 @@ function Render() {
 $('#menu-btn').click(function(event) {
 	if ($('.menu-content').css('left')=='-260px') {
 		$('.menu-content').css('left', '0');
-		$('.cover').fadeIn('60');
+		$('.cover').fadeIn();
 	}else {
 		hideSidebar();
-		$('.cover').fadeOut('60');
+		$('.cover').fadeOut();
 	}
 });
 
@@ -198,7 +203,7 @@ function hideSidebar() {
 //点击遮罩层隐藏关闭侧边栏
 $('.cover').click(function(event) {
 	hideSidebar();
-	$('.cover').fadeOut('60');
+	$('.cover').fadeOut();
 });
 //菜单选项调用页面
 $('.menu-item').click(function(event) {
@@ -223,15 +228,19 @@ $('.menu-item').click(function(event) {
 });
 //菜单呼出页面种类：卡片式，页面
 var MenuItemFunc = (function () {
-	var listPage = function(list) {
-		if(list=='todo'){
+	var listPage = function(type) {
+		$('.cover').fadeOut();
+		if(type=='todo'){
 			$('#completed-list').fadeOut();
 			$('#task-list').fadeIn();
-		}else if(list=='completed'){
+		}else if(type=='completed'){
+			if($('#completed-list').html()==''){
+				render.init('#completed-list');
+			}
+			render.init('#completed-list');
 			$('#task-list').fadeOut();
-			$('#completed-list').fadeIn();
+			$('#completed-list').fadeIn();	
 		}
-		$('.cover').fadeOut('fast');
 	};
 	var changeColor = function () {
 		subMenuPanel();
@@ -250,15 +259,15 @@ var MenuItemFunc = (function () {
 })();
 //菜单卡片
 var subMenuPanel = function() {
-	$('.menu-subCard').fadeIn('200');
-	$('#menu-btn').fadeOut('fast');
-	$('#back-btn').fadeIn('fast');
+	$('.menu-subCard').fadeIn();
+	$('#menu-btn').fadeOut();
+	$('#back-btn').fadeIn();
 	//关闭当前菜单选项
 	$('.cover, #back-btn').click(function(event) {
-		$('.cover').fadeOut('fast');
-		$('.menu-subCard').fadeOut('fast');
-		$('#menu-btn').fadeIn('fast');
-		$('#back-btn').fadeOut('fast');
+		$('.cover').fadeOut();
+		$('.menu-subCard').fadeOut();
+		$('#menu-btn').fadeIn();
+		$('#back-btn').fadeOut();
 	});
 }
 //换肤功能 主题颜色控制器 
@@ -296,16 +305,16 @@ function aboutPanel() {
 /*
 	==================================================================================
 										手势操作 
-					1. 导航栏和操作按钮智能隐藏 √
+					1. 导航栏和操作按钮智能隐藏 xxxxxxxx
 					2. 任务列表左右滑动可完成或删除
 	==================================================================================
 */
-
-
 //滑动智能隐藏 header和btn 
 (function(){
+	// var sctA = $(document).scrollTop(), 
+	// 	headerHeight = $('#header').height();
 	var sctA = $(document).scrollTop(), 
-		headerHeight = $('#header').outerHeight();
+		headerHeight = $('#header').height();
 
 	$(window).scroll(function(event) {
 		var sctB = $(document).scrollTop();
@@ -327,6 +336,7 @@ function aboutPanel() {
 		sctA = $(document).scrollTop();
 	});
 })();
+
 function showHeaderBtn() {
 	$('#header').addClass('headerDown');
 	$('.btnBox').addClass('btnUp');
